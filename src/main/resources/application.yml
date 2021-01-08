@@ -1,0 +1,43 @@
+#spring.rabbitmq.addresses=192.168.8.169:5672
+#spring.rabbitmq.username=guest
+#spring.rabbitmq.password=guest
+#spring.rabbitmq.virtual-host=/
+#spring.rabbitmq.connection-timeout=15000ms
+#
+#
+#
+#server.port=8090
+#server.servlet.context-path=/
+#
+#spring.jackson.date-format=yyyy-MM-dd HH:mm:ss
+#spring.jackson.time-zone=GMT+8
+#spring.jackson.default-property-inclusion=NON_NULL
+
+spring:
+  rabbitmq:
+    addresses: 192.168.8.169:5672
+    username: guest
+    password: guest
+    virtual-host: /
+    publisher-returns: true
+    template:
+      mandatory: true
+    publisher-confirm-type: correlated
+  datasource:
+    url: jdbc:mysql://localhost:3306/rabbitmq?useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&serverTimezone=UTC
+    username: root
+    password: 123456
+    driverClassName: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+mybatis:
+  type-aliases-package: com.imooc
+  mapper-locations: classpath*:/mappers/*.xml
+logging:
+  level:
+    tk:
+      mybatis: trace
+
+server:
+  port: 8090
+  servlet:
+    context-path: /
